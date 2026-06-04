@@ -5,24 +5,29 @@ import { EditableSiteShell } from '@/editable/shell/EditableSiteShell'
 export default function AboutPage() {
   return (
     <EditableSiteShell>
-      <main className="bg-[var(--editable-page-bg,#fffaf3)] px-4 py-14 text-[var(--editable-page-text,#241915)] sm:px-6 lg:px-8">
-        <section className="mx-auto grid max-w-[var(--editable-container)] gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-          <article className="rounded-[2.5rem] border border-[var(--editable-border)] bg-white/80 p-8 shadow-sm lg:p-12">
-            <p className="text-xs font-black uppercase tracking-[0.24em] opacity-55">{pagesContent.about.badge}</p>
-            <h1 className="mt-5 text-5xl font-black tracking-[-0.07em]">About {SITE_CONFIG.name}</h1>
-            <p className="mt-5 max-w-2xl text-base leading-8 opacity-70">{pagesContent.about.description}</p>
-            <div className="mt-8 space-y-4 text-sm leading-8 opacity-75">
-              {pagesContent.about.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-            </div>
-          </article>
-          <aside className="space-y-4">
-            {pagesContent.about.values.map((value) => (
-              <div key={value.title} className="rounded-[2rem] border border-[var(--editable-border)] bg-white/70 p-6 shadow-sm">
-                <h2 className="text-xl font-black tracking-[-0.04em]">{value.title}</h2>
-                <p className="mt-3 text-sm leading-7 opacity-70">{value.description}</p>
+      <main className="bg-white px-4 py-14 text-[var(--editable-page-text)] sm:px-6 lg:px-8">
+        <section className="mx-auto max-w-[var(--editable-container)]">
+          <div className="rounded-[2.8rem] bg-[linear-gradient(90deg,#dfe4fb_0%,#4451f7_36%,#f46aa6_73%,#5d58ea_100%)] px-6 py-14 text-white sm:px-10 lg:px-14">
+            <p className="text-xs uppercase tracking-[0.28em] text-white/78">{pagesContent.about.badge}</p>
+            <h1 className="mt-5 max-w-4xl font-sans text-5xl font-semibold tracking-[-0.06em] sm:text-6xl lg:text-7xl">About {SITE_CONFIG.name}</h1>
+            <p className="mt-6 max-w-3xl text-lg leading-9 text-white/86">{pagesContent.about.description}</p>
+          </div>
+
+          <div className="mt-10 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+            <article className="rounded-[2.3rem] border border-[var(--editable-border)] bg-white p-8 shadow-[0_24px_65px_rgba(30,26,24,0.06)] lg:p-10">
+              <div className="space-y-5 text-base leading-8 text-[var(--slot4-muted-text)]">
+                {pagesContent.about.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
               </div>
-            ))}
-          </aside>
+            </article>
+            <aside className="grid gap-4">
+              {pagesContent.about.values.map((value) => (
+                <div key={value.title} className="rounded-[2rem] border border-[var(--editable-border)] bg-[var(--slot4-gray)] p-6">
+                  <h2 className="font-serif text-3xl tracking-[-0.04em] text-[var(--slot4-page-text)]">{value.title}</h2>
+                  <p className="mt-3 text-sm leading-7 text-[var(--slot4-muted-text)]">{value.description}</p>
+                </div>
+              ))}
+            </aside>
+          </div>
         </section>
       </main>
     </EditableSiteShell>
