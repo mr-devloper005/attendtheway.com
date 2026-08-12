@@ -32,7 +32,7 @@ img {
 }
 
 ::selection {
-  background: rgba(77, 93, 255, 0.18);
+  background: rgba(200, 255, 0, 0.2);
   color: var(--slot4-page-text);
 }
 
@@ -42,20 +42,20 @@ img {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(36, 31, 29, 0.05);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(92, 79, 74, 0.24);
+  background: rgba(255, 255, 255, 0.15);
   border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(92, 79, 74, 0.4);
+  background: rgba(255, 255, 255, 0.25);
 }
 
 .article-content {
-  color: rgba(36, 31, 29, 0.86);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .article-content p + p {
