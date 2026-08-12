@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { ArrowUpRight } from 'lucide-react'
 import { SITE_CONFIG } from '@/lib/site-config'
 import { globalContent } from '@/editable/content/global.content'
 import { useEditableLocalAuthSession } from '@/editable/components/EditableLocalAuthForms'
@@ -8,44 +9,61 @@ import { useEditableLocalAuthSession } from '@/editable/components/EditableLocal
 export function EditableFooter() {
   const year = new Date().getFullYear()
   const { session, logout } = useEditableLocalAuthSession()
+  const enabledTasks = SITE_CONFIG.tasks.filter((t) => t.enabled)
 
   return (
-    <footer className="mt-8 bg-[var(--slot4-dark-bg)] text-[var(--slot4-dark-text)]">
-      <div className="mx-auto grid max-w-[var(--editable-container)] gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.2fr_0.8fr_1fr] lg:px-8">
-        <div>
-          <p className="font-serif text-3xl tracking-[-0.06em]">{SITE_CONFIG.name}</p>
-          <p className="mt-4 max-w-md text-sm leading-7 text-white/68">{globalContent.footer.description}</p>
-          <p className="mt-5 text-xs uppercase tracking-[0.24em] text-white/45">{globalContent.footer.bottomNote}</p>
-        </div>
+    <footer className="bg-[#0b0b0f] text-white">
+      <div className="mx-auto max-w-[1360px] px-5 pt-20 sm:px-8">
+        <div className="grid gap-14 lg:grid-cols-[1.5fr_0.7fr_0.7fr_0.7fr]">
+          <div>
+            <p className="text-2xl font-bold tracking-[-0.04em]">{SITE_CONFIG.name}</p>
+            <p className="mt-5 max-w-sm text-sm leading-7 text-white/40">{globalContent.footer.description}</p>
+            <p className="mt-6 text-[11px] font-medium uppercase tracking-[0.2em] text-white/25">{globalContent.footer.bottomNote}</p>
+          </div>
 
-        {globalContent.footer.columns.map((column) => (
-          <div key={column.title}>
-            <h2 className="text-xs uppercase tracking-[0.24em] text-white/45">{column.title}</h2>
-            <div className="mt-4 grid gap-2">
-              {column.links.map((link) => (
-                <Link key={link.href} href={link.href} className="text-sm text-white/78 hover:text-white">
-                  {link.label}
+          <div>
+            <h3 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/25">Browse</h3>
+            <div className="mt-5 grid gap-3">
+              <Link href="/" className="text-sm text-white/50 transition hover:text-[#c8ff00]">Home</Link>
+              {enabledTasks.map((task) => (
+                <Link key={task.key} href={task.route} className="group inline-flex items-center gap-1 text-sm text-white/50 transition hover:text-[#c8ff00]">
+                  {task.label} <ArrowUpRight className="h-3 w-3 opacity-0 transition group-hover:opacity-100" />
                 </Link>
               ))}
-              {column.title === 'Visit' && session ? (
-                <button type="button" onClick={logout} className="text-left text-sm text-white/78 hover:text-white">
-                  Logout
-                </button>
-              ) : null}
+              <Link href="/search" className="text-sm text-white/50 transition hover:text-[#c8ff00]">Search</Link>
             </div>
           </div>
-        ))}
 
-        <div>
-          <h2 className="text-xs uppercase tracking-[0.24em] text-white/45">Notes</h2>
-          <div className="mt-4 space-y-3 text-sm leading-7 text-white/68">
-            <p>{globalContent.footer.tagline}</p>
-            <p>Browse current posts, search the archive, or reach out with a new idea.</p>
+          <div>
+            <h3 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/25">Site</h3>
+            <div className="mt-5 grid gap-3">
+              <Link href="/about" className="text-sm text-white/50 transition hover:text-[#c8ff00]">About</Link>
+              <Link href="/contact" className="text-sm text-white/50 transition hover:text-[#c8ff00]">Contact</Link>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/25">Account</h3>
+            <div className="mt-5 grid gap-3">
+              {session ? (
+                <>
+                  <Link href="/create" className="text-sm text-white/50 transition hover:text-[#c8ff00]">Create post</Link>
+                  <button type="button" onClick={logout} className="text-left text-sm text-white/50 transition hover:text-[#c8ff00]">Logout</button>
+                </>
+              ) : (
+                <>
+                  <Link href="/login" className="text-sm text-white/50 transition hover:text-[#c8ff00]">Sign in</Link>
+                  <Link href="/signup" className="text-sm text-white/50 transition hover:text-[#c8ff00]">Create account</Link>
+                </>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-      <div className="border-t border-white/10 px-4 py-5 text-center text-xs uppercase tracking-[0.22em] text-white/42">
-        Copyright {year} {SITE_CONFIG.name}
+
+        <div className="mt-16 flex flex-col items-center justify-between gap-3 border-t border-white/[0.06] py-7 text-[11px] uppercase tracking-[0.18em] text-white/20 sm:flex-row">
+          <p>&copy; {year} {SITE_CONFIG.name}</p>
+          <p>{globalContent.footer.tagline}</p>
+        </div>
       </div>
     </footer>
   )
