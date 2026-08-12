@@ -18,13 +18,13 @@ export function EmptyState({
   className,
 }: EmptyStateProps) {
   return (
-    <section className={cn('rounded-[2.4rem] border border-[var(--editable-border)] bg-white px-6 py-12 text-center shadow-[0_24px_65px_rgba(30,26,24,0.06)] sm:px-10', className)}>
-      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[var(--slot4-lavender)] text-[var(--slot4-accent-fill)]">
+    <section className={cn('rounded-2xl border border-white/[0.06] bg-[#141418] px-6 py-12 text-center', className)}>
+      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#c8ff00]/10 text-[#c8ff00]">
         <SearchX className="h-7 w-7" />
       </div>
-      <h2 className="mt-6 font-serif text-4xl tracking-[-0.04em] text-[var(--slot4-page-text)]">{title}</h2>
-      <p className="mx-auto mt-4 max-w-2xl text-sm leading-8 text-[var(--slot4-muted-text)]">{description}</p>
-      <Link href={actionHref} className="mt-8 inline-flex items-center gap-2 rounded-full bg-[var(--slot4-page-text)] px-6 py-3 text-sm font-semibold text-white">
+      <h2 className="mt-6 text-4xl font-bold tracking-[-0.03em] text-white">{title}</h2>
+      <p className="mx-auto mt-4 max-w-2xl text-sm leading-8 text-white/40">{description}</p>
+      <Link href={actionHref} className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#c8ff00] px-6 py-3 text-sm font-bold text-[#0b0b0f]">
         {actionLabel}
         <ArrowRight className="h-4 w-4" />
       </Link>

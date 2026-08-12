@@ -31,8 +31,8 @@ const saveSession = (user: Pick<LocalUser, 'name' | 'email'>) => {
   window.dispatchEvent(new Event('slot4-auth-change'))
 }
 
-const inputClass = 'h-14 rounded-[1.35rem] border border-[var(--editable-border)] bg-[var(--slot4-gray)] px-4 text-base text-[var(--slot4-page-text)] outline-none transition placeholder:text-[var(--slot4-soft-muted-text)] focus:border-[var(--slot4-accent-fill)] focus:bg-white'
-const buttonClass = 'inline-flex h-14 items-center justify-center rounded-full bg-[var(--slot4-accent-fill)] px-6 text-sm font-semibold uppercase tracking-[0.18em] text-white shadow-sm transition hover:-translate-y-0.5 disabled:opacity-60'
+const inputClass = 'h-14 rounded-xl border border-white/10 bg-white/[0.04] px-4 text-base text-white outline-none transition placeholder:text-white/25 focus:border-[#c8ff00]/50 focus:bg-white/[0.06]'
+const buttonClass = 'inline-flex h-14 items-center justify-center rounded-full bg-[#c8ff00] px-6 text-sm font-bold uppercase tracking-[0.18em] text-[#0b0b0f] transition hover:bg-[#b8ef00] disabled:opacity-60'
 
 export function EditableLocalLoginForm() {
   const router = useRouter()
@@ -60,7 +60,7 @@ export function EditableLocalLoginForm() {
     <form className="mt-6 grid gap-4" onSubmit={submit}>
       <input className={inputClass} type="email" placeholder="Email address" value={email} onChange={(event) => setEmail(event.target.value)} required />
       <input className={inputClass} type="password" placeholder="Password" value={password} onChange={(event) => setPassword(event.target.value)} required />
-      {message ? <p className={`rounded-[1.35rem] px-4 py-3 text-sm ${status === 'success' ? 'bg-emerald-50 text-emerald-800' : 'bg-red-50 text-red-700'}`}>{message}</p> : null}
+      {message ? <p className={`rounded-[1.35rem] px-4 py-3 text-sm ${status === 'success' ? 'border border-emerald-500/30 bg-emerald-500/10 text-emerald-300' : 'border border-red-500/30 bg-red-500/10 text-red-300'}`}>{message}</p> : null}
       <button type="submit" className={buttonClass}>{pagesContent.auth.login.submitLabel}</button>
     </form>
   )
@@ -102,7 +102,7 @@ export function EditableLocalSignupForm() {
       <input className={inputClass} placeholder="Full name" value={name} onChange={(event) => setName(event.target.value)} required />
       <input className={inputClass} type="email" placeholder="Email address" value={email} onChange={(event) => setEmail(event.target.value)} required />
       <input className={inputClass} type="password" placeholder="Password" value={password} onChange={(event) => setPassword(event.target.value)} required />
-      {message ? <p className={`rounded-[1.35rem] px-4 py-3 text-sm ${status === 'success' ? 'bg-emerald-50 text-emerald-800' : 'bg-red-50 text-red-700'}`}>{message}</p> : null}
+      {message ? <p className={`rounded-[1.35rem] px-4 py-3 text-sm ${status === 'success' ? 'border border-emerald-500/30 bg-emerald-500/10 text-emerald-300' : 'border border-red-500/30 bg-red-500/10 text-red-300'}`}>{message}</p> : null}
       <button type="submit" className={buttonClass}>{pagesContent.auth.signup.submitLabel}</button>
     </form>
   )

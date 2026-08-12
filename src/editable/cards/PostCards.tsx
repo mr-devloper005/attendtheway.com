@@ -66,7 +66,7 @@ export function RailPostCard({ post, href, index }: { post: SitePost; href: stri
       <div className="relative aspect-[4/5] overflow-hidden">
         <img src={getEditablePostImage(post)} alt={post.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_35%,rgba(18,18,30,0.82)_100%)]" />
-        <span className="absolute left-4 top-4 rounded-full bg-white px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--slot4-page-text)]">
+        <span className="absolute left-4 top-4 rounded-full bg-[#c8ff00] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-[#0b0b0f]">
           {String(index + 1).padStart(2, '0')}
         </span>
         <h3 className="absolute bottom-4 left-4 right-4 font-serif text-2xl leading-tight tracking-[-0.04em] text-white">{post.title}</h3>

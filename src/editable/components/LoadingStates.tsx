@@ -6,18 +6,18 @@ type LoadingStateProps = {
 }
 
 function PulseBlock({ className }: { className?: string }) {
-  return <div className={cn('animate-pulse rounded-[1.5rem] bg-[var(--slot4-page-text)]/8', className)} />
+  return <div className={cn('animate-pulse rounded-xl bg-white/[0.06]', className)} />
 }
 
 export function PageLoadingState({ label = 'Loading page', className }: LoadingStateProps) {
   return (
     <div className={cn('mx-auto w-full max-w-[var(--editable-container)] px-4 py-12 sm:px-6 lg:px-8', className)} aria-live="polite" aria-busy="true">
-      <p className="text-xs uppercase tracking-[0.24em] text-[var(--slot4-soft-muted-text)]">{label}</p>
-      <PulseBlock className="mt-5 h-14 w-3/4 max-w-3xl rounded-[2rem]" />
+      <p className="text-[11px] uppercase tracking-[0.24em] text-white/30">{label}</p>
+      <PulseBlock className="mt-5 h-14 w-3/4 max-w-3xl rounded-2xl" />
       <PulseBlock className="mt-4 h-5 w-2/3 max-w-2xl" />
       <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
         {[0, 1, 2].map((item) => (
-          <div key={item} className="rounded-[2rem] border border-[var(--editable-border)] bg-white p-5">
+          <div key={item} className="rounded-2xl border border-white/[0.06] bg-[#141418] p-5">
             <PulseBlock className="h-52 w-full" />
             <PulseBlock className="mt-5 h-7 w-4/5" />
             <PulseBlock className="mt-3 h-4 w-3/5" />
@@ -32,7 +32,7 @@ export function CardGridLoadingState({ count = 6, className }: LoadingStateProps
   return (
     <div className={cn('grid gap-5 sm:grid-cols-2 lg:grid-cols-3', className)} aria-live="polite" aria-busy="true">
       {Array.from({ length: count }).map((_, index) => (
-        <div key={index} className="rounded-[2rem] border border-[var(--editable-border)] bg-white p-4">
+        <div key={index} className="rounded-2xl border border-white/[0.06] bg-[#141418] p-4">
           <PulseBlock className="h-52 w-full" />
           <PulseBlock className="mt-4 h-6 w-5/6" />
           <PulseBlock className="mt-3 h-4 w-2/3" />
@@ -46,9 +46,9 @@ export function CardGridLoadingState({ count = 6, className }: LoadingStateProps
 export function DetailLoadingState({ label = 'Loading detail', className }: LoadingStateProps) {
   return (
     <div className={cn('mx-auto grid w-full max-w-[var(--editable-container)] gap-8 px-4 py-12 lg:grid-cols-[0.9fr_1.1fr]', className)} aria-live="polite" aria-busy="true">
-      <PulseBlock className="h-[420px] w-full rounded-[2rem]" />
-      <div className="rounded-[2rem] border border-[var(--editable-border)] bg-white p-8">
-        <p className="text-xs uppercase tracking-[0.24em] text-[var(--slot4-soft-muted-text)]">{label}</p>
+      <PulseBlock className="h-[420px] w-full rounded-2xl" />
+      <div className="rounded-2xl border border-white/[0.06] bg-[#141418] p-8">
+        <p className="text-[11px] uppercase tracking-[0.24em] text-white/30">{label}</p>
         <PulseBlock className="mt-5 h-14 w-4/5" />
         <PulseBlock className="mt-5 h-4 w-full" />
         <PulseBlock className="mt-3 h-4 w-5/6" />
